@@ -14,6 +14,11 @@ export default function App() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
+  // Wipes the form back to empty — used when starting a new application
+  function handleReset() {
+    setFormData(initialFormValues)
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 text-slate-800">
       <Header />
@@ -24,7 +29,7 @@ export default function App() {
             element={<AdmissionForm formData={formData} onChange={handleChange} />}
           />
           <Route path="/review" element={<ApplicationReview formData={formData} />} />
-          <Route path="/success" element={<SuccessPage formData={formData} />} />
+          <Route path="/success" element={<SuccessPage formData={formData} onStartNew={handleReset} />} />
         </Routes>
       </main>
     </div>

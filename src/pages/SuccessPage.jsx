@@ -3,8 +3,13 @@ import Button from '../components/Button'
 
 const STEPS = ['Details', 'Review', 'Done']
 
-export default function SuccessPage() {
+export default function SuccessPage({ onStartNew }) {
     const navigate = useNavigate()
+
+    function handleStartNew() {
+        onStartNew?.()
+        navigate('/')
+    }
 
     return (
         <div className="space-y-6">
@@ -31,7 +36,7 @@ export default function SuccessPage() {
                     Thank you for applying. We've received your application and will get back to you soon.
                 </p>
                 <div className="mt-6">
-                    <Button onClick={() => navigate('/')}>Start New Application</Button>
+                    <Button onClick={handleStartNew}>Start New Application</Button>
                 </div>
             </div>
         </div>

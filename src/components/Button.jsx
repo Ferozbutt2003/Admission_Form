@@ -3,6 +3,7 @@ export default function Button({
     onClick,
     type = 'button',
     variant = 'primary',
+    disabled = false,
 }) {
     const looks = {
         primary:
@@ -15,7 +16,8 @@ export default function Button({
         <button
             type={type}
             onClick={onClick}
-            className={`cursor-pointer rounded-lg px-5 py-2.5 text-sm font-semibold outline-none transition-all duration-150 ${looks[variant]}`}
+            disabled={disabled}
+            className={`cursor-pointer rounded-lg px-5 py-2.5 text-sm font-semibold outline-none transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-60 ${looks[variant]}`}
         >
             {children}
         </button>
